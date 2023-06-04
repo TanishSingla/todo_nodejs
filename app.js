@@ -14,6 +14,9 @@ dbConnect();
 const app = express();
 
 
+app.get("/", (req, resp) => {
+    resp.send(`<h1>Working</h1>`);
+})
 //middleware
 app.use(express.json());
 app.use(cookieParser());
