@@ -21,11 +21,12 @@ app.get("/", (req, resp) => {
 app.use(express.json());
 app.use(cookieParser());
 app.use(errorMiddleware);
-app.use(cors({
-    origin: [process.env.FRONTEND_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-}));
+app.use(cors())
+// app.use(cors({
+//     origin: [process.env.FRONTEND_URL],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+// }));
 
 //using routes
 app.use("/users", userRouter);

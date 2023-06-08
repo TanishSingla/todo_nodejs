@@ -8,7 +8,6 @@ class ErrorHandler extends Error {
 
 };
 
-
 export const errorMiddleware = (err, req, resp, next) => {
 
     err.message = err.message || "Internal Servrer Error";

@@ -6,14 +6,17 @@ import ErrorHandler from "../middleware/error.js";
 
 
 
-export const register = async (req, resp) => {
+export const register = async (req, resp, next) => {
 
     try {
         const { name, email, password } = req.body;
 
         let user = await User.findOne({ email });
 
-        if (user) return next(new ErrorHandler("Email Already Exists", 400));
+        // if (user) return next(new ErrorHandler("Email Already Exists", 400));
+
+        if (user) return resp.status(200).json({ status: false, message: "Email Already Exists" });
+
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
